@@ -1,0 +1,51 @@
+body {
+  background-color: #FAF9F6;
+  color: #000000;
+  font-family: "Times New Roman", serif;
+  text-align: center;
+  margin: 150px 0;
+}
+
+h1 {
+  font-style: italic;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.main-photo {
+  width: 600px;
+  max-width: 90%;
+  height: auto;
+  border: none;
+}
+
+.caption {
+  color: #000;
+  font-size: 0.9em;
+  margin: 10px 0 20px 0;
+}
+
+nav a {
+  color: blue;
+  text-decoration: underline;
+  font-size: 0.95em;
+  margin: 0 1px;
+}
+
+nav a:hover {
+  color: darkblue;
+}
+
+@media (max-width: 600px) {
+  body {
+    margin: 20px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  .main-photo {
+    width: 100%;
+  }
+}
