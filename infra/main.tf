@@ -1,3 +1,3 @@
 module "website" {
-  source = "./modules/s3"
+  source = "./modules/frontend"
 }
