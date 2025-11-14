@@ -79,6 +79,8 @@ resource "aws_cloudfront_origin_access_control" "website_oac" {
 
 # CloudFront Distribution
 resource "aws_cloudfront_distribution" "website_s3_distribution" {
+
+depends_on = [aws_acm_certificate_validation.this]
   enabled             = true
   is_ipv6_enabled     = true
   default_root_object = "index.html"
