@@ -1,7 +1,5 @@
-# ============================================
 # ROUTE53 - ZONA DNS
-# ============================================
-resource "aws_route53_zone" "main" {
+resource "aws_route53_zone" "this" {
   name = var.domain_name
 
   tags = merge(
@@ -27,13 +25,13 @@ resource "aws_route53_record" "cert_validation" {
   records         = [each.value.record]
   ttl             = 60
   type            = each.value.type
-  zone_id         = aws_route53_zone.main.zone_id
+  zone_id         = aws_route53_zone.this.zone_id
 }
 
 
 # Root domain (gabrielsales.dev) → CloudFront
 resource "aws_route53_record" "website_root" {
-  zone_id = aws_route53_zone.main.zone_id
+  zone_id = aws_route53_zone.this.zone_id
   name    = var.domain_name
   type    = "A"
 
@@ -46,7 +44,7 @@ resource "aws_route53_record" "website_root" {
 
 # www subdomain → CloudFront
 resource "aws_route53_record" "website_www" {
-  zone_id = aws_route53_zone.main.zone_id
+  zone_id = aws_route53_zone.this.zone_id
   name    = "www.${var.domain_name}"
   type    = "A"
 
