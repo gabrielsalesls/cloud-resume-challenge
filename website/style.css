@@ -49,3 +49,12 @@ nav a:hover {
     width: 100%;
   }
 }
+
+.visit-counter {
+  font-size: 1rem;
+  color: #0f0f0f;
+  text-align: center;
+  margin-top: 2rem;
+  letter-spacing: 1px;
+  font-style: italic;
+}
