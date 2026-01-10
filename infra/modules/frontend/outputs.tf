@@ -1,6 +1,3 @@
-# ============================================
-# OUTPUTS
-# ============================================
 output "route53_nameservers" {
   description = "Configure estes nameservers na Hostinger para migrar o DNS"
   value       = aws_route53_zone.this.name_servers
