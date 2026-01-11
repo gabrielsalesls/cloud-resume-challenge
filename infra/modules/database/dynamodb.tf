@@ -3,7 +3,7 @@ module "common" {
 }
 
 resource "aws_dynamodb_table" "this" {
-  name         = "count_visitors_database_test_another_one"
+  name         = "visitors_database"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "id"
 

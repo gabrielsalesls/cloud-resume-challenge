@@ -2,11 +2,6 @@ module "common" {
   source = "../common"
 }
 
-# REMOVA ESTA LINHA:
-# module "database" {
-#   source = "../database"
-# }
-
 data "archive_file" "zip_python_code" {
   type        = "zip"
   source_dir  = "../lambda/src/"
@@ -41,7 +36,7 @@ resource "aws_iam_policy" "dynamo_access" {
         "dynamodb:PutItem",
         "dynamodb:UpdateItem"
       ]
-      Resource = var.dynamodb_table_arn  # Usa a variável
+      Resource = var.dynamodb_table_arn
     }]
   })
 }
@@ -55,7 +50,7 @@ resource "aws_lambda_function" "example" {
   depends_on = [aws_iam_role_policy_attachment.vinculo]
 
   filename      = data.archive_file.zip_python_code.output_path
-  function_name = "visit_counter_lambda_agora_vai"
+  function_name = "visits_lambda"
   role          = aws_iam_role.lambda_role.arn
   handler       = "index.lambda_handler"
   runtime       = "python3.13"

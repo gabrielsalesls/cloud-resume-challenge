@@ -23,6 +23,19 @@ resource "aws_s3_object" "website_files" {
   content_type = lookup(local.mime_types, regex("\\.[^.]+$", each.value), "application/octet-stream")
 }
 
+resource "aws_s3_object" "main_js" {
+  bucket       = aws_s3_bucket.website_bucket.id
+  key          = "main.js"
+  content_type = "application/javascript"
+
+  content = templatefile(
+    "../frontend/template/main.js",
+    {
+      api_url = var.api_gateway_endpoint
+    }
+  )
+}
+
 # Bloquear TODO acesso público
 resource "aws_s3_bucket_public_access_block" "static_website_access_block" {
   bucket = aws_s3_bucket.website_bucket.id
